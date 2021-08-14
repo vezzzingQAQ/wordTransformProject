@@ -13,19 +13,18 @@ class QFileDialogEXPForm(QWidget):
 
         self.fileName=""
         self.fileNameSaved=""
-        self.stateText="Welcome!\nVersion 1.0.1 By Vezzzing I.D.S\n"
+        self.stateText="Welcome!\nVersion 1.1.1 By VezzzingQAQ I.D.S\n"
         self.customArea=120000
 
-        self.allFile=os.listdir("QssFile")
-        self.totalState= len(self.allFile)
-        self.state=1
+        self.charList=[]#上色字符串集
 
-        self.loadQss("QssFile/QssBright.qss")
+        self.loadQss("support/QssFile/QssBright.qss")
+        self.loadCharList()
         self.initUI()
 
     def initUI(self):
         self.setWindowTitle("●I.T.W.V1.0.2!!!∑(ﾟДﾟノ)ノ")
-        self.setWindowIcon(QIcon("Images/vezzzinge.png"))
+        self.setWindowIcon(QIcon("support/Images/vezzzinge.png"))
         formlayout=QHBoxLayout()
 
         self.text=QTextEdit("最后会在这里显示")
@@ -35,20 +34,11 @@ class QFileDialogEXPForm(QWidget):
         self.buttonLoad.clicked.connect(self.loadImage)
 
         self.cb=QComboBox()
-        self.cb.addItems(["█▉▊▋▌▍▎▏",
-                          "█▇▆▅▄▃▂▁",
-                          "■■■■□□□□",
-                          "◆◆◆◆◇◇◇◇",
-                          "●●●●○○○○",
-                          "♥♥♥♥♡♡♡♡",
-                          "++++----",
-                          "☀☀☀☀☼☼☼☼",
-                          "▩▩▦▥▧▨▤▤",
-                          "██▓▓▒▒░░",
-                          "灏巰离水大三二一",
-                          "䭨得我水火人二一",
-                          "■■■■    "])
+        self.cb.addItems(self.charList)
         #如果已经选择了图片，自动切换：
+
+        self.customeButton=QPushButton("自定义字符串")
+        self.customeButton.clicked.connect(self.showCT)
 
         self.labelcb=QLabel("指定上色字符串")
         self.cb.currentIndexChanged.connect(lambda :self.changepictures(self.fileName))
@@ -104,7 +94,7 @@ class QFileDialogEXPForm(QWidget):
         self.fmbutton=QPushButton("点击投喂作者")
         self.fmbutton.clicked.connect(self.lath)
 
-        self.csbutton=QPushButton("点击切换界面")
+        self.csbutton=QPushButton("点击切换风格")
         self.csbutton.clicked.connect(self.ccss)
         #面板规划###########################################
         self.panel=QFrame()
@@ -114,6 +104,7 @@ class QFileDialogEXPForm(QWidget):
         self.panelLayout.addWidget(self.buttonLoad)
         self.panelLayout.addWidget(self.labelcb)
         self.panelLayout.addWidget(self.cb)
+        self.panelLayout.addWidget(self.customeButton)
         self.panelLayout.addWidget(self.labelwidth)
         self.panelLayout.addWidget(self.sliderw)
         self.panelLayout.addWidget(self.labelheight)
@@ -143,6 +134,12 @@ class QFileDialogEXPForm(QWidget):
         self.setLayout(formlayout)
         self.showMaximized()
 
+    def loadCharList(self):
+        #读取txt文件中的上色字符串,放到comboBox cb里面
+        with open("support/charList.txt","r",encoding='utf-8')as f:
+            temp=f.read()
+            self.charList=temp.split(",")
+    
     def loadQss(self,stname):
         try:
             styleFile=stname
@@ -153,7 +150,7 @@ class QFileDialogEXPForm(QWidget):
 
     def loadImage(self):
         self.fileNameSaved=self.fileName
-        self.fileName,_=QFileDialog.getOpenFileName(self,"打开文件","Images","图像文件(*.jpg *.png *bmp)")
+        self.fileName,_=QFileDialog.getOpenFileName(self,"打开文件","support/Images","图像文件(*.jpg *.png *bmp)")
         self.changepictures(self.fileName)
         if self.fileName=="":#防止已经有图片载入后打开导入框但是又没有选择导致filename清空
             self.fileName=self.fileNameSaved
@@ -190,7 +187,7 @@ class QFileDialogEXPForm(QWidget):
                 textout += "\n"
             self.text.setText(textout)
             textOutput="\n"+path+"\n宽度="+str(width)+";高度="+str(height)+\
-                       "\n原始宽度="+str(owidth)+";原始高度="+str(oheight)+"\n上色字符串="+ascii+"\n"
+                        "\n原始宽度="+str(owidth)+";原始高度="+str(oheight)+"\n上色字符串="+ascii+"\n"
             self.stateText+=textOutput
             self.textStateE.setText(self.stateText)
             self.textStateE.moveCursor(QTextCursor.End)
@@ -213,17 +210,13 @@ class QFileDialogEXPForm(QWidget):
         self.textStateE.moveCursor(QTextCursor.End)
 
     def ccss(self):
-        try:
-            if self.state==self.totalState:
-                self.state=1
-            else:
-                self.state+=1
-            self.loadQss("QssFile/"+self.allFile[self.state-1])
-        except:
-            pass
+        changeStyle()
 
     def lath(self):
         showChild()
+
+    def showCT(self):
+        showCustomText()
 
     def closeEvent(self, event):
         app = QApplication.instance()  # 退出应用程序
@@ -234,7 +227,7 @@ class ShowEXP(QWidget):
         super(ShowEXP, self).__init__()
         self.setWindowOpacity(0.9)
 
-        self.setWindowIcon(QIcon("Images/vezzzinge.png"))
+        self.setWindowIcon(QIcon("support/Images/vezzzinge.png"))
         self.setWindowTitle("微信扫一扫投喂作者")
         self.resize(290,260)
         self.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowStaysOnTopHint)
@@ -242,7 +235,7 @@ class ShowEXP(QWidget):
         formlayout = QVBoxLayout()
 
         self.label=QLabel()
-        img = QImage("FDA/1.png")
+        img = QImage("support/FDA/1.png")
         result = img.scaled(260, 260,Qt.IgnoreAspectRatio, Qt.SmoothTransformation)
         self.label.setPixmap(QPixmap.fromImage(result))
 
@@ -256,14 +249,106 @@ class ShowEXP(QWidget):
         newTop=int((screen.height()-size.height())/2)
         self.move(newLeft,newTop)
 
-if __name__=="__main__":
+class CustomText(QWidget):
+    def __init__(self):
+        super(CustomText, self).__init__()
+
+        self.setWindowIcon(QIcon("support/Images/vezzzinge.png"))
+        self.setWindowTitle("自定义上色字符串")
+        self.resize(490,60)
+        self.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowStaysOnTopHint)
+
+        formlayout = QHBoxLayout()
+
+        self.label=QLabel("自定义上色字符串")
+        self.char1=QLineEdit()
+        self.char2=QLineEdit()
+        self.char3=QLineEdit()
+        self.char4=QLineEdit()
+        self.char5=QLineEdit()
+        self.char6=QLineEdit()
+        self.char7=QLineEdit()
+        self.char8=QLineEdit()
+        self.confirmButton=QPushButton("确定")
+        self.confirmButton.clicked.connect(self.processChar)
+
+        formlayout.addWidget(self.label)
+        formlayout.addWidget(self.char1)
+        formlayout.addWidget(self.char2)
+        formlayout.addWidget(self.char3)
+        formlayout.addWidget(self.char4)
+        formlayout.addWidget(self.char5)
+        formlayout.addWidget(self.char6)
+        formlayout.addWidget(self.char7)
+        formlayout.addWidget(self.char8)
+        formlayout.addWidget(self.confirmButton)
+
+        self.setLayout(formlayout)
+
+    def processChar(self):
+        if len(self.char1.text())*len(self.char2.text())*len(self.char3.text())*len(self.char4.text())*len(self.char5.text())*len(self.char6.text())*len(self.char7.text())*len(self.char8.text())==1:
+            currentChar=self.char1.text()+self.char2.text()+self.char3.text()+self.char4.text()+self.char5.text()+self.char6.text()+self.char7.text()+self.char8.text()
+            addChar(currentChar)
+            self.char1.setText("")
+            self.char2.setText("")
+            self.char3.setText("")
+            self.char4.setText("")
+            self.char5.setText("")
+            self.char6.setText("")
+            self.char7.setText("")
+            self.char8.setText("")
+            self.hide()
+        else:
+            self.setWindowTitle("有字符不为一位!!")
+
+    def center(self):#窗口居中函数
+        screen=QDesktopWidget().screenGeometry()#得到屏幕坐标
+        size=self.geometry()#得到窗口坐标系
+        newLeft=int((screen.width()-size.width())/2)
+        newTop=int((screen.height()-size.height())/2)
+        self.move(newLeft,newTop)
+
+if __name__=="__main__":    
     app=QApplication(sys.argv)
     main=QFileDialogEXPForm()
     child=ShowEXP()
+    customText=CustomText()
+
+    allFile=os.listdir("support/QssFile")
+    totalState= len(allFile)
+    state=1
+
     main.show()
 
     def showChild():
         child.show()
         child.center()
+
+    def showCustomText():
+        customText.show()
+        customText.center()
+
+    def changeStyle():
+        global state#这是个坑
+        if state==totalState:
+            state=1
+        else:
+            state+=1
+        loadQss("support/QssFile/"+allFile[state-1])
+
+    def loadQss(stname):
+        try:
+            styleFile=stname
+            qssStyle= CommonQssLoader.readCss(styleFile)
+            main.setStyleSheet(qssStyle)
+            child.setStyleSheet(qssStyle)
+            customText.setStyleSheet(qssStyle)
+        except:
+            pass
+
+    def addChar(charAdded):
+        main.cb.clear()
+        main.cb.addItem(charAdded)
+        main.cb.addItems(main.charList)
 
     sys.exit(app.exec_())
