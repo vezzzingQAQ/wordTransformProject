@@ -23,8 +23,8 @@ class QFileDialogEXPForm(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle("●I.T.W.V1.0.2!!!∑(ﾟДﾟノ)ノ")
-        self.setWindowIcon(QIcon("support/Images/vezzzinge.png"))
+        self.setWindowTitle("白糖字符画生成器")
+        self.setWindowIcon(QIcon("support/Images/ico.jpg"))
         formlayout=QHBoxLayout()
 
         self.text=QTextEdit("最后会在这里显示")
@@ -227,7 +227,7 @@ class ShowEXP(QWidget):
         super(ShowEXP, self).__init__()
         self.setWindowOpacity(0.9)
 
-        self.setWindowIcon(QIcon("support/Images/vezzzinge.png"))
+        self.setWindowIcon(QIcon("support/Images/ico.jpg"))
         self.setWindowTitle("微信扫一扫投喂作者")
         self.resize(290,260)
         self.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowStaysOnTopHint)
@@ -253,7 +253,7 @@ class CustomText(QWidget):
     def __init__(self):
         super(CustomText, self).__init__()
 
-        self.setWindowIcon(QIcon("support/Images/vezzzinge.png"))
+        self.setWindowIcon(QIcon("support/Images/ico.jpg"))
         self.setWindowTitle("自定义上色字符串")
         self.resize(490,60)
         self.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowStaysOnTopHint)
