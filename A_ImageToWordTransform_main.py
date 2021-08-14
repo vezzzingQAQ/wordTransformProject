@@ -6,7 +6,7 @@ from QssLoader import *
 import sys
 import math
 import os
-#pyinstaller -F -w -i Images/faviconA.ico A_ImageToWordTransform_main.py
+#pyinstaller -F -w -i support/Images/favico.ico A_ImageToWordTransform_main.py  
 class QFileDialogEXPForm(QWidget):
     def __init__(self):
         super(QFileDialogEXPForm, self).__init__()
