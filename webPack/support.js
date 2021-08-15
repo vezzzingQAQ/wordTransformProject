@@ -42,10 +42,6 @@ function Letter(x,y,vx,vy,r,id){
         //element.style.left=this.position.x+"px;";
         //element.style.top=this.position.y+"px;";
         element.style.cssText="left:"+this.position.x+"px;top:"+this.position.y+"px;color:rgb("+this.color+","+this.color+","+this.color+",200);";
-        if(this.id==2){
-            console.log(element);
-            console.log(this.position.x,this.position.y,this.velocity.x,this.velocity.y);
-        }
     }
 }
 

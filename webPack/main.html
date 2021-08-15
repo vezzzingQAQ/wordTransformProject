@@ -56,6 +56,7 @@
             color: rgb(0, 0, 0);
             margin-top: 90px;
             z-index: 9999;
+            overflow: hidden;
         }
         .epcheight{
             width: 100vw;
@@ -130,6 +131,9 @@
         .floatRightDiv>.innerFloat:hover{
             background-color: rgb(206, 206, 206);
         }
+        .floatRightDiv>.current{
+            background-color: rgb(206, 206, 206);
+        }
 
         .header{
             overflow: hidden;
@@ -190,7 +194,9 @@
             background-repeat: no-repeat;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="slideIn.css">
     <script src="support.js"></script>
+    <script src="slideIn.js"></script>
     <script>
         window.onload=function(){
             var header=document.querySelector(".header");
@@ -218,6 +224,10 @@
             },40);
             
             window.addEventListener("scroll",function(){
+                var about=document.querySelector(".about");
+                var application=document.querySelector(".app");
+                var download=document.querySelector(".download");
+
                 var value=window.scrollY;
 
                 var title=document.querySelector(".header>h1");
@@ -230,6 +240,21 @@
                         lettersList[i].color=currentValue/1.5;
                     }
                 }
+                if(document.documentElement.scrollTop>=about.offsetTop-getClientHeight() && value<=application.offsetTop-getClientHeight()){
+                    document.querySelector("#introduction").setAttribute("class","innerFloat current");
+                }else{
+                    document.querySelector("#introduction").setAttribute("class","innerFloat");
+                }
+                if(document.documentElement.scrollTop>=application.offsetTop-getClientHeight() && value<=download.offsetTop-getClientHeight()){
+                    document.querySelector("#application").setAttribute("class","innerFloat current");
+                }else{
+                    document.querySelector("#application").setAttribute("class","innerFloat");
+                }
+                if(document.documentElement.scrollTop>=download.offsetTop-getClientHeight()){
+                    document.querySelector("#download").setAttribute("class","innerFloat current");
+                }else{
+                    document.querySelector("#download").setAttribute("class","innerFloat");
+                }
             });
             window.addEventListener("scroll",function(){
                 var value=window.scrollY;
@@ -237,7 +262,7 @@
                 var rightBox=document.querySelector(".floatRightDiv");
                 rightBox.style.opacity=value/600;
             })
-
+            scrollAnimate();
         }
     </script>
     <body>
@@ -246,75 +271,75 @@
         </section>
         <div class="floatRightDiv">
             <div class="innerFloat" id="introduction">简介</div>
-            <div class="innerFloat" id="introduction">应用</div>
-            <div class="innerFloat" id="introduction">下载</div>
+            <div class="innerFloat" id="application">应用</div>
+            <div class="innerFloat" id="download">下载</div>
         </div>
-        <section class="about1 tpcheight">
-            <h2 class="anup">简介</h2>
-            <h3 class="anup">introduction</h3>
+        <section class="about tpcheight">
+            <h2 class="anup slideIn">简介</h2>
+            <h3 class="anup slideIn">introduction</h3>
         </section>
         <section class="sec1 epcheight">
             <div class="leftPictureContainer" id="pic1"></div>
             <div class="rightWordContainer">
-                <h2>界面和功能</h2>
-                <p>一键图片转文字，急速导出</p>
-                <p>支持自定义上色字符串</p>
-                <p>支持导出文本大小缩放</p>
-                <p>支持插入注释符，生成全院最靓代码</p>
+                <h2 class="slideIn">界面和功能</h2>
+                <p class="slideIn">一键图片转文字，急速导出</p>
+                <p class="slideIn">支持自定义上色字符串</p>
+                <p class="slideIn">支持导出文本大小缩放</p>
+                <p class="slideIn">支持插入注释符，生成全院最靓代码</p>
             </div>
         </section>
         <section class="sec1 epcheight">
             <div class="rightPictureContainer" id="pic2"></div>
             <div class="leftWordContainer">
-                <h2>我们支持自定义</h2>
-                <p>可自定义默认上色字符串</p>
-                <p>支持修改QSS窗口样式</p>
-                <p>路径公开，鼓励修改</p>
-                <p>附带教程，鼓励修改</p>
+                <h2 class="slideIn">我们支持自定义</h2>
+                <p class="slideIn">可自定义默认上色字符串</p>
+                <p class="slideIn">支持修改QSS窗口样式</p>
+                <p class="slideIn">路径公开，鼓励修改</p>
+                <p class="slideIn">附带教程，鼓励修改</p>
             </div>
         </section>
         <section class="sec1 epcheight">
             <div class="leftPictureContainer" id="pic3"></div>
             <div class="rightWordContainer">
-                <h2>我们鼓励开源</h2>
-                <p>源码全面开源</p>
-                <p>Github仓库:<a href="https://github.com/vezzzingQAQ/wordTransformProject" target="_blank">传送门</a></p>
-                <p>引用库文件:python3:pyqt5,pillow,pyinstaller</p>
-                <p>来自社区，回报社区</p>
+                <h2 class="slideIn">我们鼓励开源</h2>
+                <p class="slideIn">源码全面开源</p>
+                <p class="slideIn">Github仓库:<a href="https://github.com/vezzzingQAQ/wordTransformProject" target="_blank">传送门</a></p>
+                <p class="slideIn">引用库文件:python3:pyqt5,pillow,pyinstaller</p>
+                <p class="slideIn">来自社区，回报社区</p>
             </div>
         </section>
-        <section class="about1 tpcheight">
-            <h2 class="anup">应用</h2>
-            <h3 class="anup">application</h3>
+        <section class="app tpcheight">
+            <h2 class="anup slideIn">应用</h2>
+            <h3 class="anup slideIn">application</h3>
         </section>
         <section class="sec1 epcheight">
             <div class="rightPictureContainer" id="pic4"></div>
             <div class="leftWordContainer">
-                <h2>评论区王炸</h2>
-                <p>水贴2333</p>
-                <p>慎用，容易被打</p>
+                <h2 class="slideIn">评论区王炸</h2>
+                <p class="slideIn">水贴2333</p>
+                <p class="slideIn">慎用，容易被打</p>
             </div>
         </section>
         <section class="sec1 epcheight">
             <div class="leftPictureContainer" id="pic5"></div>
             <div class="rightWordContainer">
-                <h2>无敌注释</h2>
-                <p>支持// ' # \n......</p>
-                <p>可以藏很多彩蛋(●'◡'●)v</p>
-                <p>比如说在F12里面</p>
-                <p>记得写代码，别光顾着玩注释</p>
+                <h2 class="slideIn">无敌注释</h2>
+                <p class="slideIn">支持// ' # \n......</p>
+                <p class="slideIn">可以藏很多彩蛋(●'◡'●)v</p>
+                <p class="slideIn">比如说在F12里面</p>
+                <p class="slideIn">记得写代码，别光顾着玩注释</p>
             </div>
         </section>
         <section class="about1 tpcheight">
-            <h2 class="anup">下载</h2>
-            <h3 class="anup">download</h3>
+            <h2 class="anup slideIn">下载</h2>
+            <h3 class="anup slideIn">download</h3>
         </section>
-        <section class="sec1 epcheight">
+        <section class="download epcheight">
             <div class="leftPictureContainer" id="pic1"></div>
             <div class="rightWordContainer">
-                <h2>无需安装，打开即用</h2>
-                <p>源码:<a href="https://github.com/vezzzingQAQ/wordTransformProject" target="_blank">传送门</a></p>
-                <p>exe:<a href="https://github.com/vezzzingQAQ/wordTransformProject" target="_blank">传送门</a></p>
+                <h2 class="slideIn">无需安装，打开即用</h2>
+                <p class="slideIn">源码:<a href="https://github.com/vezzzingQAQ/wordTransformProject" target="_blank">传送门</a></p>
+                <p class="slideIn">exe:<a href="https://github.com/vezzzingQAQ/wordTransformProject" target="_blank">传送门</a></p>
             </div>
         </section>
         

@@ -1,0 +1,4 @@
+.slideIn{
+    margin-top: 200px;  
+    transition: 0.25s ease-in-out;
+}
