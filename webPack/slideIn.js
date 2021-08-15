@@ -15,7 +15,6 @@ function scrollAnimate(){
     window.addEventListener("scroll",function(){
         //var value=window.scrollY;
         for(var i=0;i<animateBlock1.length;i++){
-            console.log(animateBlock1[i].offsetTop)
             if(animateBlock1[i].offsetTop-document.documentElement.scrollTop<=getClientHeight()){
                 animateBlock1[i].style.marginTop="2px";
             }else{

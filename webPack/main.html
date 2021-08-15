@@ -43,6 +43,9 @@
         body{
             overflow-x: hidden;
         }
+        ::-webkit-scrollbar{
+            display: none;
+        }
 
         .opcheight{
             width: 100vw;
@@ -114,7 +117,7 @@
 
         .floatRightDiv{
             position: fixed;
-            right: 15px;
+            right: 25px;
             bottom: 30px;
             border-radius: 5px;
             z-index: 99999;
@@ -203,6 +206,16 @@
             var stringPool="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&%#$@*"
             var tempHTML="";
 
+            document.querySelector("#introduction").onclick=function(){
+                slideTo(document.querySelector(".introduction").offsetTop,0.3);
+            }
+            document.querySelector("#application").onclick=function(){
+                slideTo(document.querySelector(".application").offsetTop,0.3);
+            }
+            document.querySelector("#download").onclick=function(){
+                slideTo(document.querySelector(".download").offsetTop,0.3);
+            }
+
             var lettersList=[];
             for(var i=0;i<200;i++){
                 var left=Math.floor(Math.random()*window.innerWidth);
@@ -224,8 +237,8 @@
             },40);
             
             window.addEventListener("scroll",function(){
-                var about=document.querySelector(".about");
-                var application=document.querySelector(".app");
+                var introduction=document.querySelector(".introduction");
+                var application=document.querySelector(".application");
                 var download=document.querySelector(".download");
 
                 var value=window.scrollY;
@@ -236,11 +249,9 @@
 
                 for(var i=0;i<lettersList.length;i++){
                     var currentValue=value;
-                    if(currentValue<=255*1.5){
-                        lettersList[i].color=currentValue/1.5;
-                    }
+                    lettersList[i].color=currentValue/1.5;
                 }
-                if(document.documentElement.scrollTop>=about.offsetTop-getClientHeight() && value<=application.offsetTop-getClientHeight()){
+                if(document.documentElement.scrollTop>=introduction.offsetTop-getClientHeight() && value<=application.offsetTop-getClientHeight()){
                     document.querySelector("#introduction").setAttribute("class","innerFloat current");
                 }else{
                     document.querySelector("#introduction").setAttribute("class","innerFloat");
@@ -274,7 +285,7 @@
             <div class="innerFloat" id="application">应用</div>
             <div class="innerFloat" id="download">下载</div>
         </div>
-        <section class="about tpcheight">
+        <section class="introduction tpcheight">
             <h2 class="anup slideIn">简介</h2>
             <h3 class="anup slideIn">introduction</h3>
         </section>
@@ -308,7 +319,7 @@
                 <p class="slideIn">来自社区，回报社区</p>
             </div>
         </section>
-        <section class="app tpcheight">
+        <section class="application tpcheight">
             <h2 class="anup slideIn">应用</h2>
             <h3 class="anup slideIn">application</h3>
         </section>
@@ -330,11 +341,11 @@
                 <p class="slideIn">记得写代码，别光顾着玩注释</p>
             </div>
         </section>
-        <section class="about1 tpcheight">
+        <section class="download tpcheight">
             <h2 class="anup slideIn">下载</h2>
             <h3 class="anup slideIn">download</h3>
         </section>
-        <section class="download epcheight">
+        <section class="sec1 epcheight">
             <div class="leftPictureContainer" id="pic1"></div>
             <div class="rightWordContainer">
                 <h2 class="slideIn">无需安装，打开即用</h2>

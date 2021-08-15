@@ -44,4 +44,16 @@ function Letter(x,y,vx,vy,r,id){
         element.style.cssText="left:"+this.position.x+"px;top:"+this.position.y+"px;color:rgb("+this.color+","+this.color+","+this.color+",200);";
     }
 }
+function slideTo(position,time){
+    var currentScroll=window.scrollY;
+    var speed=(position-currentScroll)/(50*time);
+    console.log(currentScroll);
+    var timer1=setInterval(function(){
+        currentScroll+=speed;
+        window.scrollTo(0,currentScroll);
+        if((speed<0 && currentScroll<=position)||(speed>0 && currentScroll>=position)){
+            clearInterval(timer1);
+        }
+    },20)
+}
 
