@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<!--〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇-->
+<!--〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇-->
+<!--〇〇〇〇〇〇〇〇〇三的好好好的〇〇〇〇〇〇三的好好好的〇〇〇〇〇〇〇〇〇〇-->
+<!--〇〇〇〇〇〇〇〇〇好的三三的好的〇〇〇〇〇好好的三三好的〇〇〇〇〇〇〇〇〇-->
+<!--〇〇〇〇〇〇〇〇〇三三〇〇〇三的〇〇〇〇〇的三〇〇〇三三〇〇〇〇〇〇〇〇〇-->
+<!--〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇-->
+<!--〇〇〇〇〇〇〇〇〇三三〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇三三〇〇〇〇〇〇〇〇-->
+<!--〇〇〇〇〇三〇〇〇的好好好的〇〇〇〇〇〇〇〇〇〇的好好好的〇〇三〇〇〇〇〇-->
+<!--〇〇〇〇三三〇〇〇〇〇三的好好的〇〇〇〇〇〇的好好的三〇〇〇〇三〇〇〇〇〇-->
+<!--〇〇〇〇三〇〇〇三的的的的好好离的〇〇〇〇的离好好的的的的三〇〇三〇〇〇〇-->
+<!--〇〇〇三三〇〇〇三的三三的的好好的〇〇〇〇的好好的的三三的三〇〇三三〇〇〇-->
+<!--〇〇三三三〇〇〇三的的的的的三三三〇〇〇〇三三三的的的的三三〇三三三〇〇〇-->
+<!--〇〇三三三三三三三的三三〇〇〇〇〇〇〇〇〇〇〇〇〇〇三三的三三三三三〇〇〇-->
+<!--〇〇三三三三三的的三三三〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇三三的的的三三〇〇〇-->
+<!--〇〇三三三三三三三三三三三三三〇〇〇〇〇〇〇〇〇三三三三三三三三三三〇〇〇-->
+<!--〇〇三三三三三三三三三三〇三三三三三三三三三三三〇〇三三三三三三三三〇〇〇-->
+<!--〇〇三三三三三三三三三〇一〇〇〇三三三三三三〇〇〇一〇三三三三三三三三〇〇-->
+<!--〇〇〇三三三三三三三三〇〇一一一〇〇〇〇〇〇一一一〇三三三三三三三三〇〇〇-->
+<!--〇〇〇三三三三三三三三三〇一一一〇〇三三三〇〇一一〇三三三三三三三三〇〇〇-->
+<!--〇〇〇〇三三三三三三三三三〇〇的好好离离离离好三〇三三三三三三三三〇〇〇〇-->
+<!--〇〇〇〇〇三三三三三三三三的好离离离离壕壕壕壕离的三三三三三三三〇〇〇〇〇-->
+<!--〇〇〇〇〇〇三三三三三三三三的好离离壕壕壕离好的三三三三三三三〇〇〇〇〇〇-->
+<!--〇〇〇〇〇〇〇三三三三三三三三三的的的的的的三三三三三三三三〇〇〇〇〇〇〇-->
+<!--〇〇〇〇〇〇〇〇〇三三三三三三三三三三三三三三三三三三三〇〇〇〇〇〇〇〇〇-->
+<!--〇〇〇〇〇〇〇〇〇〇〇〇三三三三三三三三三三三三三〇〇〇〇〇〇〇〇〇〇〇〇-->
+<!--〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇-->
+<!--〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇-->
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="ico.jpg">
+        <title>白糖字符画生成器</title>
+    </head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            overflow-x: hidden;
+        }
+
+        .opcheight{
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+        .tpcheight{
+            width: 100vw;
+            height: 25vh;
+            background-color: rgb(243, 243, 243);
+            color: rgb(0, 0, 0);
+            margin-top: 90px;
+            z-index: 9999;
+        }
+        .epcheight{
+            width: 100vw;
+            height: 80vh;
+            position: relative;
+        }
+        .tpcheight>h2{
+            line-height: 15vh;
+            width: 100vw;
+            text-align: center;
+            font-size: 40px;
+        }
+        .tpcheight>h3{
+            width: 100vw;
+            text-align: center;
+            font-size: 20px;
+        }
+        .leftPictureContainer{
+            position: absolute;
+            width: 30vw;
+            height: 66vh;
+            left: 20vw;
+            top: 17vh;
+        }
+        .rightWordContainer{
+            position: absolute;
+            width: 30vw;
+            height: 56vh;
+            left: 60vw;
+            top: 32vh;
+            background-color: rgba(255, 255, 255, 0.192);
+        }
+        .rightPictureContainer{
+            position: absolute;
+            width: 30vw;
+            height: 66vh;
+            left: 50vw;
+            top: 17vh;
+        }
+        .leftWordContainer{
+            position: absolute;
+            width: 40vw;
+            height: 56vh;
+            left: 20vw;
+            top: 32vh;
+            background-color: rgba(255, 255, 255, 0.192);
+        }
+        .rightWordContainer>h2,.leftWordContainer>h2{
+            padding: 10px;
+            padding-bottom: 20px;
+        }
+        .rightWordContainer>p,.leftWordContainer>p{
+            padding: 10px;
+        }
+
+        .floatRightDiv{
+            position: fixed;
+            right: 15px;
+            bottom: 30px;
+            border-radius: 5px;
+            z-index: 99999;
+            opacity: 0;
+        }
+        .floatRightDiv>.innerFloat{
+            display: block;
+            line-height: 50px;
+            font-size: 20px;
+            padding: 10px;
+            background-color: #fff;
+            transition: 0.3s ease-in-out;
+        }
+        .floatRightDiv>.innerFloat:hover{
+            background-color: rgb(206, 206, 206);
+        }
+
+        .header{
+            overflow: hidden;
+        }
+        .header>.act{
+            font-size: 20px;
+            position: absolute;
+            z-index: 1;
+        }
+        .header>h1{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            line-height: 100vh;
+            text-align: center;
+            font-size: 50px;
+            color: rgba(0, 0, 0, 0.726);
+            pointer-events: none;
+            z-index: 999;
+        }
+        .header>h1::selection{
+            background-color: transparent;
+        }
+        .header>h1>span{
+            font-size: 100px;
+            color: rgba(24, 24, 24, 0.863);
+        }
+
+        #pic1{
+            background-image: url("bg1.JPG");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #pic2{
+            background-image: url("bg2.JPG");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #pic3{
+            background-image: url("bg3.JPG");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #pic4{
+            background-image: url("bg4.JPG");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #pic5{
+            background-image: url("bg5.JPG");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <script src="support.js"></script>
+    <script>
+        window.onload=function(){
+            var header=document.querySelector(".header");
+            var stringPool="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&%#$@*"
+            var tempHTML="";
+
+            var lettersList=[];
+            for(var i=0;i<200;i++){
+                var left=Math.floor(Math.random()*window.innerWidth);
+                var right=Math.floor(Math.random()*window.innerHeight);
+                var tempStyle="style=";
+                tempStyle+="left:"+left+"px;";
+                tempStyle+="top:"+right+"px;";
+                tempHTML+="<p class='act' id='act"+i+"' "+tempStyle+">"+stringPool[Math.floor(Math.random()*stringPool.length)]+"</p>";
+                lettersList.push(new Letter(left,right,Math.random()*6-3,Math.random()*6-3,10,i))
+            }
+            header.innerHTML+=tempHTML;
+
+            var timer=setInterval(function(){
+                for(var i=0;i<lettersList.length;i++){
+                    lettersList[i].checkEdges();
+                    lettersList[i].update();
+                    lettersList[i].display();
+                }
+            },40);
+            
+            window.addEventListener("scroll",function(){
+                var value=window.scrollY;
+
+                var title=document.querySelector(".header>h1");
+                title.style.paddingTop=value/2+"px";
+                title.style.color="rgb("+value+","+value+","+value+");";
+
+                for(var i=0;i<lettersList.length;i++){
+                    var currentValue=value;
+                    if(currentValue<=255*1.5){
+                        lettersList[i].color=currentValue/1.5;
+                    }
+                }
+            });
+            window.addEventListener("scroll",function(){
+                var value=window.scrollY;
+
+                var rightBox=document.querySelector(".floatRightDiv");
+                rightBox.style.opacity=value/600;
+            })
+
+        }
+    </script>
+    <body>
+        <section class="header opcheight">
+            <h1><span>白 糖  </span>字 符 画 生 成 器</h1>
+        </section>
+        <div class="floatRightDiv">
+            <div class="innerFloat" id="introduction">简介</div>
+            <div class="innerFloat" id="introduction">应用</div>
+            <div class="innerFloat" id="introduction">下载</div>
+        </div>
+        <section class="about1 tpcheight">
+            <h2 class="anup">简介</h2>
+            <h3 class="anup">introduction</h3>
+        </section>
+        <section class="sec1 epcheight">
+            <div class="leftPictureContainer" id="pic1"></div>
+            <div class="rightWordContainer">
+                <h2>界面和功能</h2>
+                <p>一键图片转文字，急速导出</p>
+                <p>支持自定义上色字符串</p>
+                <p>支持导出文本大小缩放</p>
+                <p>支持插入注释符，生成全院最靓代码</p>
+            </div>
+        </section>
+        <section class="sec1 epcheight">
+            <div class="rightPictureContainer" id="pic2"></div>
+            <div class="leftWordContainer">
+                <h2>我们支持自定义</h2>
+                <p>可自定义默认上色字符串</p>
+                <p>支持修改QSS窗口样式</p>
+                <p>路径公开，鼓励修改</p>
+                <p>附带教程，鼓励修改</p>
+            </div>
+        </section>
+        <section class="sec1 epcheight">
+            <div class="leftPictureContainer" id="pic3"></div>
+            <div class="rightWordContainer">
+                <h2>我们鼓励开源</h2>
+                <p>源码全面开源</p>
+                <p>Github仓库:<a href="https://github.com/vezzzingQAQ/wordTransformProject" target="_blank">传送门</a></p>
+                <p>引用库文件:python3:pyqt5,pillow,pyinstaller</p>
+                <p>来自社区，回报社区</p>
+            </div>
+        </section>
+        <section class="about1 tpcheight">
+            <h2 class="anup">应用</h2>
+            <h3 class="anup">application</h3>
+        </section>
+        <section class="sec1 epcheight">
+            <div class="rightPictureContainer" id="pic4"></div>
+            <div class="leftWordContainer">
+                <h2>评论区王炸</h2>
+                <p>水贴2333</p>
+                <p>慎用，容易被打</p>
+            </div>
+        </section>
+        <section class="sec1 epcheight">
+            <div class="leftPictureContainer" id="pic5"></div>
+            <div class="rightWordContainer">
+                <h2>无敌注释</h2>
+                <p>支持// ' # \n......</p>
+                <p>可以藏很多彩蛋(●'◡'●)v</p>
+                <p>比如说在F12里面</p>
+                <p>记得写代码，别光顾着玩注释</p>
+            </div>
+        </section>
+        <section class="about1 tpcheight">
+            <h2 class="anup">下载</h2>
+            <h3 class="anup">download</h3>
+        </section>
+        <section class="sec1 epcheight">
+            <div class="leftPictureContainer" id="pic1"></div>
+            <div class="rightWordContainer">
+                <h2>无需安装，打开即用</h2>
+                <p>源码:<a href="https://github.com/vezzzingQAQ/wordTransformProject" target="_blank">传送门</a></p>
+                <p>exe:<a href="https://github.com/vezzzingQAQ/wordTransformProject" target="_blank">传送门</a></p>
+            </div>
+        </section>
+        
+    </body>
