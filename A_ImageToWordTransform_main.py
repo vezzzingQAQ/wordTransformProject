@@ -13,7 +13,7 @@ class QFileDialogEXPForm(QWidget):
 
         self.fileName=""
         self.fileNameSaved=""
-        self.stateText="Welcome!\nVersion 1.1.1 By VezzzingQAQ I.D.S\n"
+        self.stateText="Welcome!\nVersion 1.1.3 By vezzzingQAQ I.D.S\n"
         self.customArea=120000
 
         self.charList=[]#上色字符串集
@@ -96,6 +96,9 @@ class QFileDialogEXPForm(QWidget):
 
         self.csbutton=QPushButton("点击切换风格")
         self.csbutton.clicked.connect(self.ccss)
+
+        self.aboutButton=QPushButton("关于")
+        self.aboutButton.clicked.connect(self.showAbout)
         #面板规划###########################################
         self.panel=QFrame()
         self.panel.setFrameShape(QFrame.StyledPanel)
@@ -123,6 +126,7 @@ class QFileDialogEXPForm(QWidget):
         self.panelLayout.addWidget(self.textStateE)
         self.panelLayout.addWidget(self.fmbutton)
         self.panelLayout.addWidget(self.csbutton)
+        self.panelLayout.addWidget(self.aboutButton)
 
         self.spt = QSplitter(Qt.Horizontal)
         self.spt.addWidget(self.text)
@@ -150,7 +154,7 @@ class QFileDialogEXPForm(QWidget):
 
     def loadImage(self):
         self.fileNameSaved=self.fileName
-        self.fileName,_=QFileDialog.getOpenFileName(self,"打开文件","support/Images","图像文件(*.jpg *.png *bmp)")
+        self.fileName,_=QFileDialog.getOpenFileName(self,"打开文件","support/csPath","图像文件(*.jpg *.png *bmp)")
         self.changepictures(self.fileName)
         if self.fileName=="":#防止已经有图片载入后打开导入框但是又没有选择导致filename清空
             self.fileName=self.fileNameSaved
@@ -218,6 +222,9 @@ class QFileDialogEXPForm(QWidget):
     def showCT(self):
         showCustomText()
 
+    def showAbout(self):
+        showAbout()
+
     def closeEvent(self, event):
         app = QApplication.instance()  # 退出应用程序
         app.quit()
@@ -225,7 +232,6 @@ class QFileDialogEXPForm(QWidget):
 class ShowEXP(QWidget):
     def __init__(self):
         super(ShowEXP, self).__init__()
-        self.setWindowOpacity(0.9)
 
         self.setWindowIcon(QIcon("support/Images/ico.jpg"))
         self.setWindowTitle("微信扫一扫投喂作者")
@@ -308,11 +314,50 @@ class CustomText(QWidget):
         newTop=int((screen.height()-size.height())/2)
         self.move(newLeft,newTop)
 
+class About(QWidget):
+    def __init__(self):
+        super(About, self).__init__()
+
+        self.setWindowIcon(QIcon("support/Images/ico.jpg"))
+        self.setWindowTitle("关于")
+        self.resize(290,260)
+        self.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowStaysOnTopHint)
+
+        formlayout = QVBoxLayout()
+
+        self.label=QLabel()
+        img = QImage("support/Images/about.jpg")
+        result = img.scaled(260, 260,Qt.IgnoreAspectRatio, Qt.SmoothTransformation)
+        self.label.setPixmap(QPixmap.fromImage(result))
+
+        self.label0=QLabel(" ")
+        self.label1=QLabel("白糖字符画生成器")
+        self.label2=QLabel("版本:V1.1.3")
+        self.label3=QLabel("作者:vezzzingQAQ")
+        self.label4=QLabel("最后更新时间:2021.8.14")
+
+        formlayout.addWidget(self.label)
+        formlayout.addWidget(self.label0)
+        formlayout.addWidget(self.label1)
+        formlayout.addWidget(self.label2)
+        formlayout.addWidget(self.label3)
+        formlayout.addWidget(self.label4)
+        
+        self.setLayout(formlayout)
+
+    def center(self):#窗口居中函数
+        screen=QDesktopWidget().screenGeometry()#得到屏幕坐标
+        size=self.geometry()#得到窗口坐标系
+        newLeft=int((screen.width()-size.width())/2)
+        newTop=int((screen.height()-size.height())/2)
+        self.move(newLeft,newTop)
+
 if __name__=="__main__":    
     app=QApplication(sys.argv)
     main=QFileDialogEXPForm()
     child=ShowEXP()
     customText=CustomText()
+    about=About()
 
     allFile=os.listdir("support/QssFile")
     totalState= len(allFile)
@@ -327,6 +372,10 @@ if __name__=="__main__":
     def showCustomText():
         customText.show()
         customText.center()
+
+    def showAbout():
+        about.show()
+        about.center()
 
     def changeStyle():
         global state#这是个坑
@@ -343,6 +392,7 @@ if __name__=="__main__":
             main.setStyleSheet(qssStyle)
             child.setStyleSheet(qssStyle)
             customText.setStyleSheet(qssStyle)
+            about.setStyleSheet(qssStyle)
         except:
             pass
 
